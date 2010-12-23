@@ -28,7 +28,7 @@
 (require 'guto/markdown)
 
 ;; ejacs mode
-(add-to-list 'load-path "~/.emacs.d/vendor/ejacs")
+(add-to-list 'load-path (concat dotfiles-dir "/vendor/ejacs"))
 (autoload 'js-console "js-console" nil t)
 
 (require 'guto/helper)
@@ -39,9 +39,13 @@
 ;; Smooth scrolling
 (require 'smooth-scrolling)
 
+(add-to-list 'load-path (concat dotfiles-dir "/vendor/color-theme"))
+(require 'color-theme)
+(color-theme-initialize)
+
 ;; Add 'export TERM=xterm-256color' to ~/.profile
-(require 'color-theme-subdued)
-(color-theme-subdued)
+;;(require 'color-theme-subdued)
+;;(color-theme-subdued)
 
 ;; Fullscreen mode
 (global-set-key (kbd "M-RET") 'ns-toggle-fullscreen)
