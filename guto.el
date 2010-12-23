@@ -43,10 +43,38 @@
 (require 'color-theme)
 (color-theme-initialize)
 
-;; Add 'export TERM=xterm-256color' to ~/.profile
-;;(require 'color-theme-subdued)
-;;(color-theme-subdued)
+;; Topfunky theme
+;;(load (concat dotfiles-dir "vendor/topfunkytheme.el"))
+;;(color-theme-topfunky)
 
+;; Add 'export TERM=xterm-256color' to ~/.profile
+(require 'color-theme-subdued)
+(color-theme-subdued)
+
+;; Textmate like theme
+;;(load (concat dotfiles-dir "vendor/color-theme-blackboard.el"))
+;;(color-theme-blackboard)
+
+;; Railscasts theme
+;(load (concat dotfiles-dir "vendor/color-theme-railscasts.el"))
+;(color-theme-railscasts)
+
+;; Tango based theme
+;(load (concat dotfiles-dir "vendor/color-theme-tango.el"))
+;(color-theme-tango)
+
+;; Arjen theme
+;(load (concat dotfiles-dir "vendor/color-theme-arjen.el"))
+;(color-theme-arjen)
+
+;; Wombat theme
+;(load (concat dotfiles-dir "vendor/color-theme-wombat.el"))
+;(color-theme-wombat)
+
+
+
+;;(load (concat dotfiles-dir "vendor/color-theme-tangotango.el"))
+;;(color-theme-tangotango)
 ;; Fullscreen mode
 (global-set-key (kbd "M-RET") 'ns-toggle-fullscreen)
 
