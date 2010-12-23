@@ -75,11 +75,6 @@
 
 ;;(load (concat dotfiles-dir "vendor/color-theme-tangotango.el"))
 ;;(color-theme-tangotango)
-;; Fullscreen mode
-(global-set-key (kbd "M-RET") 'ns-toggle-fullscreen)
 
-;; Map Mac cmd as meta
-(setq mac-option-key-is-meta nil)
-(setq mac-command-key-is-meta t)
-(setq mac-command-modifier 'meta)
-(setq mac-option-modifier nil)
+;; Emacs server
+(server-start)
