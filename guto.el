@@ -77,4 +77,8 @@
 ;;(color-theme-tangotango)
 
 ;; Emacs server
-(server-start)
+;(server-start)
+(setq server-socket-file "/tmp/emacs1000/server")
+(unless (file-exists-p server-socket-file)
+  (server-start))
+
