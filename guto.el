@@ -82,3 +82,5 @@
 (unless (file-exists-p server-socket-file)
   (server-start))
 
+(require 'edit-server)
+(edit-server-start)
