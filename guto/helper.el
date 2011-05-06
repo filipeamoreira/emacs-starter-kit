@@ -66,4 +66,8 @@ table determines which characters these are."
           (system-time-locale "de_DE"))
       (insert (format-time-string format))))
 
+(defun insert-time ()
+  (interactive)
+  (insert (format-time-string "%d/%m/%Y - %R")))
+
 (provide 'guto/helper)
