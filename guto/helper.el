@@ -68,6 +68,8 @@ table determines which characters these are."
 
 (defun insert-time ()
   (interactive)
-  (insert (format-time-string "%d/%m/%Y - %R")))
+  (insert (format-time-string "--%d/%m/%Y - %R--"))
+  (insert "\n\n")
+  )
 
 (provide 'guto/helper)

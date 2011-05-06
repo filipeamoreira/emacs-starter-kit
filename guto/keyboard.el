@@ -30,4 +30,7 @@
 ;(setq mac-option-modifier nil)
 (setq mac-option-modifier 'meta)
 
+;; Keymap for insert time
+(global-set-key (kbd "C-c d") 'insert-time)
+
 (provide 'guto/keyboard)
