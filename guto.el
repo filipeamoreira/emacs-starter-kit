@@ -51,6 +51,10 @@
 (require 'color-theme-subdued)
 (color-theme-subdued)
 
+;; (load (concat dotfiles-dir "vendor/color-theme-solarized.el"))
+;; (require 'color-theme-solarized)
+;; (color-theme-solarized)
+
 ;; Textmate like theme
 ;;(load (concat dotfiles-dir "vendor/color-theme-blackboard.el"))
 ;;(color-theme-blackboard)
@@ -78,7 +82,14 @@
 
 ;; Emacs server
 ;(server-start)
-(setq server-socket-file "/tmp/emacs1000/server")
-(unless (file-exists-p server-socket-file)
-  (server-start))
+;; (setq server-socket-file "~/bin/tmp/emacs1000/server")
+;; (unless (file-exists-p server-socket-file)
+;;   (server-start))
+
+(add-hook 'server-visit-hook 'call-raise-frame)
+(defun call-raise-frame ()
+  (raise-frame))
+
+;(setq mac-command-modifier 'meta)
+(require 'php-mode)
 
