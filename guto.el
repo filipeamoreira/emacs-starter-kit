@@ -93,3 +93,5 @@
 ;(setq mac-command-modifier 'meta)
 (require 'php-mode)
 
+(require 'edit-server)
+(edit-server-start)
