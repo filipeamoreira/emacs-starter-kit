@@ -82,5 +82,15 @@
 (unless (file-exists-p server-socket-file)
   (server-start))
 
+(set-default-font "Inconsolata-9")
+
+;; Setting up html5 mode
+(add-to-list 'load-path "~/scm/git/html5-el")
+
+(eval-after-load "rgn-loc"
+  '(add-to-list 'rgn-schema-locating-files "~/scm/git/html5-el/schemas.xml"))
+
+(require 'whattf-dt)
+
 (require 'edit-server)
 (edit-server-start)

@@ -33,4 +33,10 @@
 ;; Keymap for insert time
 (global-set-key (kbd "C-c d") 'insert-time)
 
+;; Resize window
+(global-set-key (kbd "<s-right>") 'shrink-window-horizontally)
+(global-set-key (kbd "<s-left>") 'enlarge-window-horizontally)
+(global-set-key (kbd "<s-down>") 'shrink-window)
+(global-set-key (kbd "<s-up>") 'enlarge-window)
+
 (provide 'guto/keyboard)
