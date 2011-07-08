@@ -440,7 +440,9 @@ If TEST is non-nil then do not download, just list the files."
                    ""
                    nil
                    (if recursive 0 nil)
-                   dl-revision test))
+                   dl-revision
+                   test
+                   0))
         (setq moved       (nth 1 ret))
         ;; Now we have a revision number again.
         (with-current-buffer rev-buf
@@ -460,14 +462,14 @@ If TEST is non-nil then do not download, just list the files."
                                      "  %i files updated (old versions renamed to *.moved)"
                                      moved))))))
 
-(defun web-vcs-get-files-on-page-1 (vcs-rec page-url dl-root dl-relative file-mask recursive dl-revision test)
+(defun web-vcs-get-files-on-page-1 (vcs-rec page-url dl-root dl-relative file-mask recursive dl-revision test num-files)
   "Download files listed by VCS-REC on web page page-URL.
 VCS-REC should be an entry like the entries in the list
 `web-vcs-links-regexp'.
 
-If FILE-MASK is non nil then it is used to match a file path.
-Only matching files will be downloaded.  FILE-MASK can have two
-forms, a regular expression or a function.
+If FILE-MASK is non-nil then it is used to match a file relative
+path.  Only matching files will be downloaded.  FILE-MASK can
+have two forms, a regular expression or a function.
 
 If FILE-MASK is a regular expression then each part of the path
 may be a regular expresion \(not containing /).
@@ -567,6 +569,8 @@ If TEST is non-nil then do not download, just list the files"
                  (time (match-string time-num))
                  (full-file (url-expand-file-name file page-url)))
             (add-to-list 'files (list full-file time)))))
+      (when (< (length files) num-files)
+        (message "files-on-page-1: found %d files, expected %d" (length files) num-files))
       ;; Find subdirs
       (when recursive
         (goto-char (point-min))
@@ -574,13 +578,15 @@ If TEST is non-nil then do not download, just list the files"
           (let* ((suburl (match-string 1))
                  (lenurl (length page-url))
                  (full-suburl (url-expand-file-name suburl page-url)))
+	    ;;(message "suburl=%S" suburl)
             (when (and (> (length full-suburl) lenurl)
                        (string= (substring full-suburl 0 lenurl) page-url))
+	      ;;(message "...added")
               (add-to-list 'suburls full-suburl)))))
       (kill-buffer))
     ;; Download files
     ;;(message "TRACE: files=%S" files)
-    (web-vcs-download-files vcs-rec files dl-dir dl-root file-mask)
+    (web-vcs-download-files vcs-rec files dl-dir dl-root)
     ;; Download subdirs
     (when suburls
       (dolist (suburl (reverse suburls))
@@ -591,6 +597,7 @@ If TEST is non-nil then do not download, just list the files"
           ;;(message "web-vcs-get-revision-from-url-buf dir: %S %S" file-mask rel-dl-sub-dir)
           (when (or (not file-mask)
                     (not (stringp file-mask))
+		    (= 1 (length (web-vcs-file-name-as-list file-mask)))
                     (web-vcs-match-folderwise file-mask rel-dl-sub-dir))
             ;;(message "matched dir %S" rel-dl-sub-dir)
             (unless (web-vcs-contains-file dl-dir full-dl-sub-dir)
@@ -602,21 +609,26 @@ If TEST is non-nil then do not download, just list the files"
                                                      file-mask
                                                      (1+ recursive)
                                                      this-page-revision
-                                                     test)))
+                                                     test
+                                                     0)))
               (setq moved (+ moved (nth 1 ret))))))))
     (list this-page-revision moved)))
 
-(defun web-vcs-get-missing-matching-files (web-vcs url dl-dir file-mask)
+(defun web-vcs-get-missing-matching-files (web-vcs url dl-dir file-mask num-files)
   "Download missing files from VCS system using the web interface.
 Use WEB-VCS entry in variable `web-vcs-links-regexp' to download
 files via http from URL to directory DL-DIR.
 
+FILE-MASK is used to match files that should be downloaded.  See
+`web-vcs-get-files-on-page-1' for more information.
+
 Before downloading offer to visit the page from which the
 downloading will be made.
 "
+  (unless file-mask (error "file-mask is nil"))
   (let ((vcs-rec (or (assq web-vcs web-vcs-links-regexp)
                      (error "Does not know web-cvs %S" web-vcs))))
-    (web-vcs-get-files-on-page-1 vcs-rec url dl-dir "" file-mask 0 nil nil)))
+    (web-vcs-get-files-on-page-1 vcs-rec url dl-dir "" file-mask 0 nil nil num-files)))
 
 
 ;; (web-vcs-get-files-on-page 'lp "http://bazaar.launchpad.net/%7Enxhtml/nxhtml/main/files/head%3A/" t "c:/test/temp13/" t)
@@ -671,7 +683,7 @@ a temporary file."
   (and (boundp 'web-autoload-active-file-sub-url)
        web-autoload-active-file-sub-url))
 
-(defun web-vcs-download-files (vcs-rec files dl-dir dl-root file-mask)
+(defun web-vcs-download-files (vcs-rec files dl-dir dl-root)
   (dolist (file (reverse files))
     (let* ((url-file          (nth 0 file))
            (url-file-time-str (nth 1 file))
@@ -688,7 +700,7 @@ a temporary file."
            (temp-file (expand-file-name (concat web-autoload-temp-file-prefix file-name) dl-dir))
            temp-buf)
       (cond
-       ((and file-mask (not (web-vcs-match-folderwise file-mask file-rel-name))))
+       ;;((and file-mask (not (web-vcs-match-folderwise file-mask file-rel-name))))
        ((and dl-file-time
              url-file-time
              (progn
@@ -1152,6 +1164,8 @@ Return an alist with old attributes."
 ;;(web-vcs-file-name-as-list "c:/a/b/c.el")
 ;;(web-vcs-file-name-as-list ".*/a/c/")
 ;;(web-vcs-file-name-as-list "[^/]*/a/c/") ;; Just avoid this.
+;;(web-vcs-file-name-as-list "\\(?:\\.\\.?\\|README\\.txt\\(?:\\.moved\\)?\\|a\\(?:lts\\|utostart\\(?:\\.elc?\\|22\\.elc?\\)\\)\\|e\\(?:macs22\\.cmd\\|tc\\)\\|nxhtml\\(?:-\\(?:base\\.elc?\\|loaddefs\\.el\\(?:\\.moved\\|c\\)?\\|web-vcs\\.el\\(?:\\.moved\\|c\\)?\\)\\|maint\\.elc?\\)?\\|related\\|tests\\|util\\|web-\\(?:autoload\\.elc?\\|vcs\\.el\\(?:\\.moved\\|c\\)?\\)\\)")
+
 (defun web-vcs-file-name-as-list (filename)
   "Split file name FILENAME into a list with file names."
   ;; We can't use the primitives since they converts \ to / and
@@ -1185,6 +1199,11 @@ Return an alist with old attributes."
   ;;(message "folderwise %S %S" regex file)
   (let ((lst-regex (web-vcs-file-name-as-list regex))
         (lst-file  (web-vcs-file-name-as-list file)))
+    ;; Called from web-vcs-download-files for tree?
+    (when (= 1 (length lst-regex))
+      (setq lst-file (last lst-file))
+      (message "lst-file => %S" lst-file)
+      )
     (when (>= (length lst-regex) (length lst-file))
       (catch 'match
         (while lst-file
@@ -1584,7 +1603,7 @@ some sort of escape sequence, the ambiguity is resolved via `web-vcs-read-key-de
     ;;(web-vcs-message-with-face 'hi-blue "this-rel=%S  %S %S" this-rel  dl-dir this-dir)
     (setq file-mask (concat this-rel (regexp-opt files)))
     ;;(web-vcs-message-with-face 'hi-blue "r=%S" file-mask)
-    (web-vcs-get-missing-matching-files vcs base-url dl-dir file-mask)
+    (web-vcs-get-missing-matching-files vcs base-url dl-dir file-mask (length files))
     (dolist (d dirs)
       (web-vcs-update-existing-files vcs base-url dl-dir
                                        (file-name-as-directory
@@ -2313,7 +2332,7 @@ Download and install nXhtml."
         (delete-other-windows))
       (dolist (file files2)
         (unless (file-exists-p (cdr file))
-          (web-vcs-get-missing-matching-files 'lp root-url this-dir (car file))))
+          (web-vcs-get-missing-matching-files 'lp root-url this-dir (car file) 0)))
       (load (cdr (car files2))))
     (call-interactively 'nxhtml-setup-install)))
 

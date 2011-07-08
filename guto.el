@@ -8,6 +8,8 @@
 
 (require 'guto/css)
 
+(require 'guto/php)
+
 (require 'guto/keyboard)
 
 (require 'ruby-electric)
@@ -93,7 +95,7 @@
 ;(setq mac-command-modifier 'meta)
 (require 'php-mode)
 
-(set-default-font "Inconsolata-9")
+;;(set-default-font "Inconsolata-9")
 
 ;; Setting up html5 mode
 (add-to-list 'load-path "~/scm/git/html5-el")
@@ -101,7 +103,24 @@
 (eval-after-load "rgn-loc"
   '(add-to-list 'rgn-schema-locating-files "~/scm/git/html5-el/schemas.xml"))
 
+(load (concat dotfiles-dir "vendor/nxhtml/autostart.el"))
+
+(setq mumamo-background-colors nil)
+
 (require 'whattf-dt)
 
 (require 'edit-server)
 (edit-server-start)
+
+;; Display the time in the mode line
+(setq display-time-24hr-format t)
+(display-time)
+
+;; Kills all them buffers except scratch
+;; optained from http://www.chrislott.org/geek/emacs/dotemacs.html
+(defun nuke-all-buffers ()
+  "kill all buffers, leaving *scratch* only"
+  (interactive)
+  (mapcar (lambda (x) (kill-buffer x))
+	  (buffer-list))
+  (delete-other-windows))

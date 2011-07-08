@@ -31,22 +31,21 @@ table determines which characters these are."
               "The region has %d words." count))))))
 
 
-;; Rename file and buffer
-(defun rename-file-and-buffer ()
-  "Renames current buffer and file it is visiting."
-  (interactive)
-  (let ((name (buffer-name))
-        (filename (buffer-file-name)))
-    (if (not (and filename (file-exists-p filename)))
-        (message "Buffer '%s' is not visiting a file!" name)
-      (let ((new-name (read-file-name "New name: " filename)))
-        (cond ((get-buffer new-name)
-               (message "A buffer named '%s' already exists!" new-name))
-              (t
-               (rename-file filename new-name 1)
-               (rename-buffer new-name)
-               (set-visited-file-name new-name)
-               (set-buffer-modified-p nil)))))))
+;; Straight from https://sites.google.com/site/steveyegge2/my-dot-emacs-file
+
+(defun rename-file-and-buffer (new-name)
+ "Renames both current buffer and file it's visiting to NEW-NAME." (interactive "sNew name: ")
+ (let ((name (buffer-name))
+	(filename (buffer-file-name)))
+ (if (not filename)
+	(message "Buffer '%s' is not visiting a file!" name)
+ (if (get-buffer new-name)
+	 (message "A buffer named '%s' already exists!" new-name)
+   (progn
+     (rename-file name new-name 1)
+     (rename-buffer new-name)
+     (set-visited-file-name new-name)
+     (set-buffer-modified-p nil))))))
 
 (defadvice comment-or-uncomment-region (before slick-comment activate compile)
   "When called interactively with no active region, comment a single line instead."
