@@ -58,28 +58,32 @@
 ;; (color-theme-solarized)
 
 ;; Textmate like theme
-;;(load (concat dotfiles-dir "vendor/color-theme-blackboard.el"))
+(load (concat dotfiles-dir "vendor/color-theme-blackboard.el"))
 ;;(color-theme-blackboard)
 
 ;; Railscasts theme
-;(load (concat dotfiles-dir "vendor/color-theme-railscasts.el"))
+(load (concat dotfiles-dir "vendor/color-theme-railscasts.el"))
 ;(color-theme-railscasts)
 
 ;; Tango based theme
-;(load (concat dotfiles-dir "vendor/color-theme-tango.el"))
+(load (concat dotfiles-dir "vendor/color-theme-tango.el"))
 ;(color-theme-tango)
 
 ;; Arjen theme
-;(load (concat dotfiles-dir "vendor/color-theme-arjen.el"))
+(load (concat dotfiles-dir "vendor/color-theme-arjen.el"))
 ;(color-theme-arjen)
 
 ;; Wombat theme
-;(load (concat dotfiles-dir "vendor/color-theme-wombat.el"))
+(load (concat dotfiles-dir "vendor/color-theme-wombat.el"))
 ;(color-theme-wombat)
 
+;; Solarized Theme
+;;(add-to-list 'load-path (concat dotfiles-dir "vendor/emacs-color-theme-solarized/"))
+(load (concat dotfiles-dir "vendor/emacs-color-theme-solarized/solarized-definitions.el"))
+(load (concat dotfiles-dir "vendor/emacs-color-theme-solarized/solarized-dark-theme.el"))
+;;(solarized-dark-theme)
 
-
-;;(load (concat dotfiles-dir "vendor/color-theme-tangotango.el"))
+(load (concat dotfiles-dir "vendor/color-theme-tangotango.el"))
 ;;(color-theme-tangotango)
 
 ;; Emacs server
