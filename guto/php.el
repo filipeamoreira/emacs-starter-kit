@@ -46,6 +46,6 @@
 ;; (c-set-offset 'arglist-intro '+) ; for FAPI arrays and DBTNG
 ;; (c-set-offset 'arglist-cont-nonempty 'c-lineup-math) ; for DBTNG fields and values
 
-; (load (concat dotfiles-dir "vendor/nxhtml/autostart.el"))
+(load (concat dotfiles-dir "vendor/nxhtml/autostart.el"))
 
 (provide 'guto/php)

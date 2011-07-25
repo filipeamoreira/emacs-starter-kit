@@ -96,6 +96,7 @@
 (require 'php-mode)
 
 ;;(set-default-font "Inconsolata-9")
+(set-default-font "Meslo LG M DZ-9:normal")
 
 ;; Setting up html5 mode
 (add-to-list 'load-path "~/scm/git/html5-el")
@@ -103,11 +104,11 @@
 (eval-after-load "rgn-loc"
   '(add-to-list 'rgn-schema-locating-files "~/scm/git/html5-el/schemas.xml"))
 
-(load (concat dotfiles-dir "vendor/nxhtml/autostart.el"))
+;; (load (concat dotfiles-dir "vendor/nxhtml/autostart.el"))
 
 (setq mumamo-background-colors nil)
 
-(require 'whattf-dt)
+;(require 'whattf-dt)
 
 (require 'edit-server)
 (edit-server-start)
