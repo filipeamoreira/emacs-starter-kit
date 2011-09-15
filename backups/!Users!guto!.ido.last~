@@ -1,0 +1,96 @@
+;;; -*- coding: utf-8 -*-
+
+;; ----- ido-last-directory-list -----
+(
+ ("/Users/guto/scm/git/spree/core/db/" . "default/")
+ ("/Users/guto/scm/git/spree/core/config/" . "initializers/")
+ ("/Users/guto/scm/git/spree/core/" . "db/")
+ ("/Users/guto/scm/git/spree/config/" . "environments/")
+ ("/Users/guto/scm/git/spree/" . "core/")
+ ("/Users/guto/scm/git/" . "spree/")
+ ("/Users/guto/scm/" . "git/")
+ ("/Users/guto/work/freelance/agnes/donation_store/" . "config/")
+ ("/Users/guto/work/freelance/agnes/" . "donation_store/")
+ ("/Users/guto/work/freelance/" . "agnes/")
+ ("/Users/guto/work/" . "freelance/")
+ ("/Users/guto/" . "work/")
+ ("/Users/guto/.oh-my-zsh/" . "custom/")
+)
+
+;; ----- ido-work-directory-list -----
+(
+ "/Users/guto/"
+ "/Users/guto/work/freelance/agnes/donation_store/"
+ "/Users/guto/scm/git/spree/core/db/default/"
+ "/Users/guto/scm/git/spree/core/db/"
+ "/Users/guto/work/freelance/agnes/donation_store/config/"
+ "/Users/guto/.ssh/"
+ "/Users/guto/.ec2/"
+ "/Users/guto/.oh-my-zsh/custom/"
+ "/Users/guto/work/freelance/agnes/donation_store/.bundle/"
+ "/Users/guto/.emacs.d/"
+)
+
+;; ----- ido-work-file-list -----
+(
+ ".zshrc"
+ ".rvmrc"
+ ".zprofile"
+ "countries.yml"
+ "seeds.rb"
+ "deploy.rb"
+ "config"
+ "my-keypair"
+ "alias.zsh"
+ "guto.el"
+)
+
+;; ----- ido-dir-file-cache -----
+(
+ ("/Users/guto/" (20080 47821) "work/" "scm/" "Public/" "Pictures/" "Music/" "Movies/" "Library/" "Dropbox/" "Downloads/" "Documents/" "Desktop/" "bin/" ".zshrc" ".zsh_history" ".zsh-update" ".zprofile" ".zcompdump" ".viminfo" ".Trash/" ".ssh/" ".simplenote/" ".saves/" ".rvm/" ".recentf" ".rbenv/" ".pow/" ".oh-my-zsh/" ".ido.last" ".gitconfig" ".gemrc" ".gem/" ".emacs.d/" ".ec2/" ".DS_Store" ".dropbox/" ".CFUserTextEncoding" ".bash_history" "../" "./")
+
+ ("/Users/guto/.emacs.d/" (20080 46115) "vendor/" "TODO" "starter-kit-ruby.el" "starter-kit-registers.el" "starter-kit-perl.el" "starter-kit-misc.el" "starter-kit-lisp.el" "starter-kit-js.el" "starter-kit-eshell.el" "starter-kit-elpa.el" "starter-kit-defuns.el" "starter-kit-bindings.el" "README.markdown" "places" "package.el" "loaddefs.el" "init.el" "guto.el" "guto/" "eshell/" "elpa-to-submit/" "elpa/" "dominating-file.el" "COPYING" "backups/" "auto-save-list/" ".gitignore" ".git/" "../" "./")
+
+ ("/Users/guto/.oh-my-zsh/custom/" (20080 46036) "example/" "alias.zsh" "../" "./")
+
+ ("/Users/guto/work/freelance/agnes/donation_store/" (20080 47311) "vendor/" "test/" "script/" "README" "Rakefile" "public/" "lib/" "Gemfile.lock" "Gemfile" "doc/" "db/" "config.ru" "config/" "Capfile" "app/" ".rvmrc" ".rbenv-version" ".gitignore" ".git/" ".bundle/" "../" "./")
+
+ ("/Users/guto/scm/git/spree/core/db/default/" (20080 32868) "zones.yml" "zone_members.yml" "states.yml" "roles.yml" "countries.yml" "../" "./")
+
+ ("/Users/guto/scm/git/spree/core/db/" (20080 32912) "seeds.rb" "sample/" "migrate/" "default/" "../" "./")
+
+ ("/Users/guto/scm/git/spree/core/config/initializers/" (20080 32868) "workarounds_for_ruby19.rb" "sprockets_precompile_patch.rb" "spree.rb" "form_builder.rb" "deprecation_checker.rb" "../" "./")
+
+ ("/Users/guto/scm/git/spree/core/config/" (20080 32868) "routes.rb" "locales/" "initializers/" "cucumber.yml" "../" "./")
+
+ ("/Users/guto/scm/git/spree/core/" (20080 32868) "vendor/" "spree_core.gemspec" "spec/" "README.md" "Rakefile" "LICENSE" "lib/" "features/" "db/" "config/" "app/" ".rspec" "../" "./")
+
+ ("/Users/guto/.ec2/" (20080 30926) "pk-GFVHP3C4KYY2AZHDL2Y7MFU6RMQBTSXY.pem" "ec2-main.pem" "cert-GFVHP3C4KYY2AZHDL2Y7MFU6RMQBTSXY.pem" "../" "./")
+
+ ("/Users/guto/work/freelance/agnes/donation_store/config/" (20080 32259) "routes.rb" "locales/" "initializers/" "environments/" "environment.rb" "deploy.rb" "database.yml" "boot.rb" "application.rb" "api_1909053729.pem" "../" "./")
+
+ ("/Users/guto/scm/git/spree/config/environments/" (20080 32868) "cucumber.rb" "../" "./")
+
+ ("/Users/guto/scm/git/spree/config/" (20080 32868) "environments/" "../" "./")
+
+ ("/Users/guto/scm/git/spree/" (20080 32868) "SPREE_VERSION" "spree.gemspec" "sample/" "README.md" "Rakefile" "promo/" "lib/" "install.rb" "INSTALL" "Gemfile.lock" "Gemfile" "features/" "dash/" "core/" "config/" "auth/" "api/" ".gitignore" ".git/" "../" "./")
+
+ ("/Users/guto/scm/git/" (20080 32828) "spree/" "ruby-build/" "rbenv-gemset/" "rbenv/" "oh-my-zsh/" "emacs-starter-kit/" "dot-files/" "../" "./")
+
+ ("/Users/guto/scm/" (20079 50479) "git/" "../" "./")
+
+ ("/Users/guto/.ssh/" (20080 32365) "known_hosts" "id_rsa.pub" "id_rsa" "environment-Filipes-MacBook-Air.local" "config" "../" "./")
+
+ ("/Users/guto/work/freelance/agnes/donation_store/.bundle/" (20080 25922) "config" "../" "./")
+
+ ("/Users/guto/work/freelance/agnes/" (20079 55953) "donation_store/" "../" "./")
+
+ ("/Users/guto/work/freelance/" (20079 55948) "agnes/" "../" "./")
+
+ ("/Users/guto/work/" (20079 55953) "freelance/" "../" "./")
+
+ ("/Users/guto/.oh-my-zsh/" (20079 53465) "tools/" "themes/" "templates/" "README.textile" "plugins/" "oh-my-zsh.sh" "log/" "lib/" "custom/" ".gitignore" ".git/" "../" "./")
+)
+
+;; ----- ido-unc-hosts-cache -----
+t
