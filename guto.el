@@ -1,49 +1,49 @@
 ;; DESCRIPTION: guto settings
 
-(add-to-list 'load-path (concat dotfiles-dir "/vendor"))
+;(add-to-list 'load-path (concat dotfiles-dir "/vendor"))
 ;; line numbers
-(require 'linum)
-(global-linum-mode)
-(setq linum-format "%d ")
+;;(require 'linum)
+;;(global-linum-mode)
+;;(setq linum-format "%d ")
 
-(require 'guto/css)
+;;(require 'guto/css)
 
-(require 'guto/php)
+;;(require 'guto/php)
 
-(require 'guto/keyboard)
+;;(require 'guto/keyboard)
 
-(require 'ruby-electric)
-(add-hook 'ruby-mode-hook (lambda () (ruby-electric-mode t)))
+;;(require 'ruby-electric)
+;;(add-hook 'ruby-mode-hook (lambda () (ruby-electric-mode t)))
 
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
-(add-hook 'html-mode-hook #'(lambda nil (setq sgml-xml-mode t)))
-(add-hook 'html-mode-hook 'turn-off-auto-fill)
+;;(add-hook 'before-save-hook 'delete-trailing-whitespace)
+;;(add-hook 'html-mode-hook #'(lambda nil (setq sgml-xml-mode t)))
+;;(add-hook 'html-mode-hook 'turn-off-auto-fill)
 
-(require 'simplenote)
-(setq simplenote-email "famoreira@gmail.com")
-(setq simplenote-password nil)
-(simplenote-setup)
+;;(require 'simplenote)
+;;(setq simplenote-email "famoreira@gmail.com")
+;;(setq simplenote-password nil)
+;;(simplenote-setup)
 
 ;; haml-mode
-(require 'haml-mode)
+;;(require 'haml-mode)
 
-(require 'guto/markdown)
+;;(require 'guto/markdown)
 
 ;; ejacs mode
-(add-to-list 'load-path (concat dotfiles-dir "/vendor/ejacs"))
-(autoload 'js-console "js-console" nil t)
+;;(add-to-list 'load-path (concat dotfiles-dir "/vendor/ejacs"))
+;;(autoload 'js-console "js-console" nil t)
 
-(require 'guto/helper)
+;;(require 'guto/helper)
 
-(require 'ruby-electric)
-(add-hook 'ruby-mode-hook (lambda () (ruby-electric-mode t)))
+;;(require 'ruby-electric)
+;;(add-hook 'ruby-mode-hook (lambda () (ruby-electric-mode t)))
 
 ;; Smooth scrolling
-(require 'smooth-scrolling)
+;;(require 'smooth-scrolling)
 
-(add-to-list 'load-path (concat dotfiles-dir "/vendor/color-theme"))
-(require 'color-theme)
-(color-theme-initialize)
+;;(add-to-list 'load-path (concat dotfiles-dir "/vendor/color-theme"))
+;;(require 'color-theme)
+;;(color-theme-initialize)
 
 ;; Topfunky theme
 ;;(load (concat dotfiles-dir "vendor/topfunkytheme.el"))
@@ -102,22 +102,22 @@
 (require 'php-mode)
 
 ;;(set-default-font "Inconsolata-9")
-(set-default-font "Meslo LG M DZ-9:normal")
+(set-default-font "Meslo LG M DZ-12:normal")
 
 ;; Setting up html5 mode
-(add-to-list 'load-path "~/scm/git/html5-el")
+;;(add-to-list 'load-path "~/scm/git/html5-el")
 
-(eval-after-load "rgn-loc"
-  '(add-to-list 'rgn-schema-locating-files "~/scm/git/html5-el/schemas.xml"))
+;;(eval-after-load "rgn-loc"
+;;  '(add-to-list 'rgn-schema-locating-files "~/scm/git/html5-el/schemas.xml"))
 
 ;; (load (concat dotfiles-dir "vendor/nxhtml/autostart.el"))
 
-(setq mumamo-background-colors nil)
+;;(setq mumamo-background-colors nil)
 
 ;(require 'whattf-dt)
 
-(require 'edit-server)
-(edit-server-start)
+;;(require 'edit-server)
+;;(edit-server-start)
 
 ;; Display the time in the mode line
 (setq display-time-24hr-format t)
